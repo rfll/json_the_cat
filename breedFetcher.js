@@ -1,14 +1,16 @@
 const request = require('request');
 
-// Get breed from command line arg
-const breedArg = process.argv[2];
+// // Get breed from command line arg
+// const breedArg = process.argv[2];
 
-// URL with command line arg in breed search
-const URL = `https://api.thecatapi.com/v1/breeds/search?q=${breedArg}`;
+
 
 
 const fetchBreedDescription = function(breedName, callback) {
 
+  // URL with command line arg in breed search
+  const URL = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
+  
 // Request function
 request(URL, (error, response, body) => {
   
@@ -26,7 +28,7 @@ request(URL, (error, response, body) => {
 
   // String log if the command line breed doesn't exist
   if (!breed) {
-    console.log(`${breedArg} not found.`);
+    console.log(`${breedName} not found.`);
   // If breed is found, log the description
   } else {
     console.log(data[0].description);
