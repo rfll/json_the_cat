@@ -21,7 +21,7 @@ const fetchBreedDescription = function(breedName, callback) {
 
     // If the command line breed doesn't exist
     if (!breed) {
-      callback(null, `${breedName} not found.`);
+      callback(`${breedName} not found.`, null);
     } else {
       // If breed is found, log the description
       callback(null, data[0].description);
