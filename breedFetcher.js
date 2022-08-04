@@ -6,13 +6,17 @@ const breedArg = process.argv[2];
 // URL with command line arg in breed search
 const URL = `https://api.thecatapi.com/v1/breeds/search?q=${breedArg}`;
 
+
+const fetchBreedDescription = function(breedName, callback) {
+
 // Request function
 request(URL, (error, response, body) => {
   
   // Log error to console
   if (error) {
-    console.log(`Error in request ${error}`);
-    return error;
+
+    callback(error, null);
+    return;
   }
 
   // JSON data to object
@@ -29,3 +33,7 @@ request(URL, (error, response, body) => {
   }
   // console.log(typeof data);
 });
+};
+
+
+module.exports = { fetchBreedDescription };
